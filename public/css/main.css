@@ -1,0 +1,24 @@
+html, body {
+   height: 100%;
+   padding: 0;
+   margin: 0;
+   font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+   font-weight: normal;
+   color: #999;
+}
+
+#canvasContainer {
+   float: left;
+   width: 80%;
+}
+
+#sidebarContainer {
+   float: right;
+   width: 16%;
+   height: 100%;
+   border-left: 1px solid #CCC;
+   padding: 24px;
+}
