@@ -9,9 +9,24 @@
 <body>
    <div id="canvasContainer"></div>
    <div id="sidebarContainer">
-      <h1>DNS Request</h1>
-      <p>Source: Local NS</p>
-      <p>Destination: .edu NS</p>
+      <div id="packetDetailsContainer">
+         <h1 id="packetDetailsHeader">DNS Request</h1>
+         <span id="packetDetailsDetails">
+            <p>Source: Local NS</p>
+            <p>Destination: .edu NS</p>
+         </span>
+      </div>
+      <div id="nameserverDetailsContainer">
+         <h1 id="nameserverDetailsHeader">google.com NS</h1>
+         <span id="nameserverDetails">
+            www.google.com A  126.23.6.55<br/>
+            maps.google.com A  126.23.3.2<br/>
+         </span>
+      </div>
+   </div>
+   <div id="stepButtons">
+      <button id="previousStepButton">Previous Step</button>
+      <button id="nextStepButton">Next Step</button>
    </div>
    <script src="./js/main.js"></script>
 </body>

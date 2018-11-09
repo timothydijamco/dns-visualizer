@@ -10,6 +10,14 @@ h1 {
    color: #999;
 }
 
+button {
+   width: 160px;
+   padding: 16px 36px;
+   background-color: white;
+   border: 1px solid #CCC;
+   font-family: 'Open Sans', sans-serif;
+}
+
 #canvasContainer {
    float: left;
    width: 80%;
@@ -20,5 +28,15 @@ h1 {
    width: 16%;
    height: 100%;
    border-left: 1px solid #CCC;
-   padding: 24px;
+   padding: 0px 24px;
+}
+
+#stepButtons {
+   position: absolute;
+   bottom: 36px;
+   left: 36px;
+}
+
+#nextStepButton {
+   margin-left: 8px;
 }
