@@ -64,6 +64,36 @@ var packets = [
       type: "RESPONSE",
       startNode: nodes.localNS,
       endNode: nodes.hostA
+   },
+   {
+      type: "REQUEST",
+      startNode: nodes.localNS,
+      endNode: nodes.rootNS
+   },
+   {
+      type: "RESPONSE",
+      startNode: nodes.rootNS,
+      endNode: nodes.localNS
+   },
+   {
+      type: "REQUEST",
+      startNode: nodes.localNS,
+      endNode: nodes.eduNS
+   },
+   {
+      type: "RESPONSE",
+      startNode: nodes.eduNS,
+      endNode: nodes.localNS
+   },
+   {
+      type: "REQUEST",
+      startNode: nodes.localNS,
+      endNode: nodes.umassNS
+   },
+   {
+      type: "RESPONSE",
+      startNode: nodes.umassNS,
+      endNode: nodes.localNS
    }
 ]
 
@@ -105,12 +135,32 @@ loadImages(imageSources, (imageObjs) => {
    nodeLayer.draw();
 });
 
+var currentPacket = -1;
+var arrows = [];
 
-for (var i = 0; i < packets.length; i++) {
-   console.log(packets[i].startNode);
-   drawArrow(packets[i].startNode, packets[i].endNode, packets[i].type);
-}
+$("#nextStepButton").click(function() {
+   for (var i = 0; i < arrows.length; i++) {
+      arrows[i].fill("#BBBBBB");
+      arrows[i].stroke("#BBBBBB");
+   }
+   drawArrow(
+      packets[currentPacket+1].startNode,
+      packets[currentPacket+1].endNode,
+      packets[currentPacket+1].type
+   );
+   currentPacket++;
+});
 
+$("#previousStepButton").click(function() {
+   arrows[currentPacket].destroy();
+   arrows.splice(currentPacket, 1); // Remove from the arrows arrows array
+   currentPacket--;
+   if (currentPacket >= 0) {
+      arrows[currentPacket].fill("red");
+      arrows[currentPacket].stroke("red");
+   }
+   arrowLayer.draw();
+});
 
 
 function drawArrow(startNode, endNode, type) {
@@ -138,6 +188,7 @@ function drawArrow(startNode, endNode, type) {
       stroke: 'red',
       strokeWidth: 4
    });
+   arrows.push(arrow);
    arrowLayer.add(arrow);
    arrowLayer.draw();
 }
