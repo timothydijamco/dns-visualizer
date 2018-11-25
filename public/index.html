@@ -12,9 +12,9 @@
    <div id="sidebarContainer">
       <div id="packetDetailsContainer">
          <h1 id="packetDetailsHeader">DNS Request</h1>
-         <span id="packetDetailsDetails">
-            <p>Source: Local NS</p>
-            <p>Destination: .edu NS</p>
+         <span id="packetDetails">
+            <p>Source: <span id="sourceNodeText">Local NS</span></p>
+            <p>Destination: <span id="destinationNodeText">.edu NS</span></p>
          </span>
       </div>
       <div id="nameserverDetailsContainer">
@@ -29,6 +29,8 @@
       <button id="previousStepButton">Previous Step</button>
       <button id="nextStepButton">Next Step</button>
    </div>
+   <script src="./js/data.js"></script>
+   <script src="./js/view.js"></script>
    <script src="./js/main.js"></script>
 </body>
 </html>
