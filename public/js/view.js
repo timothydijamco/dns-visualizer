@@ -31,23 +31,23 @@ function createNodeViews(nodes) {
       const hostImageObj = imageObjs[0];
       const serverImageObj = imageObjs[1];
 
-      for (var key in nodes) {
+      for (let key in nodes) {
          if (nodes.hasOwnProperty(key)) {
-            var imageObj;
+            let imageObj;
             if (nodes[key].type == "HOST") {
                imageObj = hostImageObj;
             } else if (nodes[key].type == "SERVER") {
                imageObj = serverImageObj;
             }
-            var image = new Konva.Image({
+            let image = new Konva.Image({
                x: nodes[key].x,
                y: nodes[key].y,
                image: imageObj,
                width: 96,
                height: 96,
-               id: key + "Image"
+               id: key
             });
-            var text = new Konva.Text({
+            let text = new Konva.Text({
                x: nodes[key].x-48,
                y: nodes[key].y + 96 + 16,
                width: 192,
@@ -56,6 +56,11 @@ function createNodeViews(nodes) {
                fontSize: 18,
                text: nodes[key].name,
                id: key + "Text"
+            });
+            image.on('click', function() {
+               unhighlightAllNodeViews();
+               highlightNodeView(nodes[image.id()], image.id());
+               updateNameserverDetailsView(nodes[image.id()]);
             });
             nodeLayer.add(image);
             nodeLayer.add(text);
@@ -68,11 +73,11 @@ function createNodeViews(nodes) {
 
 function createPacketViews(packets, nodes) {
    for (var i = 0; i < packets.length; i++) {
-      var startNodeKey = packets[i].startNodeKey;
-      var endNodeKey = packets[i].endNodeKey;
-      var startNode = nodes[startNodeKey];
-      var endNode = nodes[endNodeKey];
-      var packetType = packets[i].type;
+      let startNodeKey = packets[i].startNodeKey;
+      let endNodeKey = packets[i].endNodeKey;
+      let startNode = nodes[startNodeKey];
+      let endNode = nodes[endNodeKey];
+      let packetType = packets[i].type;
 
       if (startNode.x <= endNode.x) {
          var arrowStartX = startNode.x + 96 + 16;
@@ -88,7 +93,7 @@ function createPacketViews(packets, nodes) {
          var arrowStartY = startNode.y + 2*96/3;
          var arrowEndY = endNode.y + 2*96/3;
       }
-      var arrow = new Konva.Arrow({
+      let arrow = new Konva.Arrow({
          x: arrowStartX,
          y: arrowStartY,
          points: [0,0, arrowEndX-arrowStartX, arrowEndY-arrowStartY],
@@ -141,11 +146,11 @@ function unhighlightAllNodeViews() {
 }
 
 function updatePacketDetailsView(packet) {
-   var startNode = nodes[packet.startNodeKey];
-   var endNode = nodes[packet.endNodeKey];
+   let startNode = nodes[packet.startNodeKey];
+   let endNode = nodes[packet.endNodeKey];
 
-   $("#sourceNodeText").html(startNode.name);
-   $("#destinationNodeText").html(endNode.name);
+   $("#sourceNodeText").html("Source: " + startNode.name);
+   $("#destinationNodeText").html("Destination: " + endNode.name);
 
    if (packet.type == "REQUEST") {
       $("#packetDetailsHeader").html("DNS Request");
@@ -157,17 +162,17 @@ function updatePacketDetailsView(packet) {
 function updateNameserverDetailsView(node) {
    $("#nameserverDetailsHeader").html(node.name);
    $("#nameserverDetails").html("");
-   for (var i = 0; i < node.records.length; i++) {
-      var record = node.records[i];
+   for (let i = 0; i < node.records.length; i++) {
+      let record = node.records[i];
       $("#nameserverDetails").append(record.hostname + " " + record.type + " " + record.ipAddress + "<br />");
    }
 }
 
 function loadImages(sources, callback) {
-   var numImagesLoaded = 0;
-   var callbackCalled = false;
-   var imageObjs = [];
-   for (var i = 0; i < sources.length; i++) {
+   let numImagesLoaded = 0;
+   let callbackCalled = false;
+   let imageObjs = [];
+   for (let i = 0; i < sources.length; i++) {
       imageObjs.push(new Image());
       imageObjs[i].src = sources[i];
       imageObjs[i].onload = function() {
