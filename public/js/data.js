@@ -4,7 +4,9 @@ var nodes = {
       name: "Host A",
       records: [],
       x: 100,
-      y: 450
+      y: 450,
+      col: 0,
+      row: 2
    },
    localNS: {
       type: "SERVER",
@@ -17,7 +19,9 @@ var nodes = {
          }
       ],
       x: 300,
-      y: 450
+      y: 450,
+      col: 1,
+      row: 2
    },
    rootNS: {
       type: "SERVER",
@@ -30,7 +34,9 @@ var nodes = {
          }
       ],
       x: 900,
-      y: 50
+      y: 50,
+      col: 4,
+      row: 0
    },
    eduNS: {
       type: "SERVER",
@@ -43,7 +49,9 @@ var nodes = {
          }
       ],
       x: 750,
-      y: 250
+      y: 250,
+      col: 3,
+      row: 1
    },
    comNS: {
       type: "SERVER",
@@ -56,7 +64,9 @@ var nodes = {
          }
       ],
       x: 1050,
-      y: 250
+      y: 250,
+      col: 5,
+      row: 1
    },
    umassNS: {
       type: "SERVER",
@@ -74,7 +84,9 @@ var nodes = {
          }
       ],
       x: 600,
-      y: 450
+      y: 450,
+      col: 2,
+      row: 2
    },
    googleNS: {
       type: "SERVER",
@@ -92,7 +104,9 @@ var nodes = {
          }
       ],
       x: 1200,
-      y: 450
+      y: 450,
+      col: 6,
+      row: 2
    }
 };
 

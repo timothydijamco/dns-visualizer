@@ -1,6 +1,7 @@
-var currentPacket = -1;
+let currentPacket = -1;
 
-createNodeViews(nodes);
+let board = createBoard(nodes);
+createNodeViews(nodes, board);
 createPacketViews(packets, nodes);
 
 $("#nextStepButton").click(function() {

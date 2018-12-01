@@ -13,7 +13,7 @@ var arrows = [];
 
 var stage = new Konva.Stage({
    container: 'canvasContainer',
-   width: document.getElementById("canvasContainer").clientWidth,
+   width: $("#canvasContainer").width(),
    height: window.innerHeight
 });
 
@@ -26,12 +26,27 @@ stage.add(arrowLayer);
 
 // Functions
 
-function createNodeViews(nodes) {
+function createBoard(nodes) {
+   let maxCol = 0;
+   let maxRow = 0;
+   for (const key in nodes) {
+      maxCol = Math.max(maxCol, nodes[key].col);
+      maxRow = Math.max(maxRow, nodes[key].row);
+   }
+   return new Board(
+      $("#canvasContainer").width(),
+      $("#canvasContainer").height(),
+      maxCol + 1,
+      maxRow + 1
+   );
+}
+
+function createNodeViews(nodes, board) {
    loadImages(imageSources, (imageObjs) => {
       const hostImageObj = imageObjs[0];
       const serverImageObj = imageObjs[1];
 
-      for (let key in nodes) {
+      for (const key in nodes) {
          if (nodes.hasOwnProperty(key)) {
             let imageObj;
             if (nodes[key].type == "HOST") {
@@ -40,17 +55,17 @@ function createNodeViews(nodes) {
                imageObj = serverImageObj;
             }
             let image = new Konva.Image({
-               x: nodes[key].x,
-               y: nodes[key].y,
+               x: board.getCellContentsTopLeftX(nodes[key].col),
+               y: board.getCellContentsTopLeftY(nodes[key].row),
                image: imageObj,
-               width: 96,
-               height: 96,
+               width: board.getCellContentsWidth(),
+               height: board.getCellContentsHeight(),
                id: key
             });
             let text = new Konva.Text({
-               x: nodes[key].x-48,
-               y: nodes[key].y + 96 + 16,
-               width: 192,
+               x: board.getCellContentsTopLeftX(nodes[key].col),
+               y: board.getCellContentsTopLeftY(nodes[key].row) + board.getCellContentsHeight() + 16,
+               width: board.getCellContentsWidth(),
                align: "center",
                fontFamily: "Open Sans",
                fontSize: 18,
@@ -80,18 +95,18 @@ function createPacketViews(packets, nodes) {
       let packetType = packets[i].type;
 
       if (startNode.x <= endNode.x) {
-         var arrowStartX = startNode.x + 96 + 16;
-         var arrowEndX = endNode.x - 16;
+         var arrowStartX = board.getCellContentsTopLeftX(startNode.col) + board.getCellContentsWidth() + 16;
+         var arrowEndX = board.getCellContentsTopLeftX(endNode.col) - 16;
       } else {
-         var arrowStartX = startNode.x - 16;
-         var arrowEndX = endNode.x + 96 + 16;
+         var arrowStartX = board.getCellContentsTopLeftX(startNode.col) - 16;
+         var arrowEndX = board.getCellContentsTopLeftX(endNode.col) + board.getCellContentsWidth() + 16;
       }
       if (packetType === "REQUEST") {
-         var arrowStartY = startNode.y + 96/3;
-         var arrowEndY = endNode.y + 96/3;
+         var arrowStartY = board.getCellContentsTopLeftY(startNode.row) + board.getCellContentsWidth()/3;
+         var arrowEndY = board.getCellContentsTopLeftY(endNode.row) + board.getCellContentsWidth()/3;
       } else {
-         var arrowStartY = startNode.y + 2*96/3;
-         var arrowEndY = endNode.y + 2*96/3;
+         var arrowStartY = board.getCellContentsTopLeftY(startNode.row) + 2*board.getCellContentsWidth()/3;
+         var arrowEndY = board.getCellContentsTopLeftY(endNode.row) + 2*board.getCellContentsWidth()/3;
       }
       let arrow = new Konva.Arrow({
          x: arrowStartX,
@@ -182,5 +197,35 @@ function loadImages(sources, callback) {
             callback(imageObjs);
          }
       }
+   }
+}
+
+
+// Classes
+
+var Board = function(width, height, cols, rows) {
+   this.width = width;
+   this.height = height;
+
+   this.colWidth = this.width / cols;
+   this.rowHeight = (this.height - 120) / rows;
+   this.cellWH = Math.min(this.colWidth, this.rowHeight);
+   this.cellContentsWH = this.cellWH * 0.6;
+   this.cellPadding = this.cellWH * 0.2;
+
+   this.getCellContentsTopLeftX = function(col) {
+      return this.cellPadding + col*this.colWidth;
+   }
+
+   this.getCellContentsTopLeftY = function(row) {
+      return this.cellPadding + row*this.rowHeight;
+   }
+
+   this.getCellContentsWidth = function() {
+      return this.cellContentsWH;
+   }
+
+   this.getCellContentsHeight = function() {
+      return this.cellContentsWH;
    }
 }
