@@ -20,15 +20,15 @@ button {
 
 #canvasContainer {
    float: left;
-   width: 80%;
+   width: 75%;
 }
 
 #sidebarContainer {
    float: right;
-   width: 16%;
+   width: 21%;
    height: 100%;
    border-left: 1px solid #CCC;
-   padding: 0px 24px;
+   padding: 0px 1.5%;
 }
 
 #stepButtons {
@@ -39,6 +39,10 @@ button {
 
 #nextStepButton {
    margin-left: 8px;
+}
+
+#packetDetailsContainer {
+   height: 40%;
 }
 
 #nameserverDetailsContainer {
