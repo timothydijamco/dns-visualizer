@@ -13,12 +13,11 @@ $("#nextStepButton").click(function() {
 
       unhighlightAllPacketViews();
       highlightPacketView(currentPacket);
+      updatePacketDetailsView(packets[currentPacket]);
 
       unhighlightAllNodeViews();
       highlightNodeView(endNode, endNodeKey);
       updateNameserverDetailsView(endNode);
-
-      updatePacketDetailsView(packets[currentPacket]);
    }
 });
 
@@ -31,7 +30,10 @@ $("#previousStepButton").click(function() {
       if (currentPacket != -1) {
          var endNodeKey = packets[currentPacket].endNodeKey;
          var endNode = nodes[endNodeKey];
+
          highlightPacketView(currentPacket);
+         updatePacketDetailsView(packets[currentPacket]);
+
          unhighlightAllNodeViews();
          highlightNodeView(endNode, endNodeKey);
          updateNameserverDetailsView(endNode);

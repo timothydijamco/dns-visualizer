@@ -164,8 +164,27 @@ function updatePacketDetailsView(packet) {
    let startNode = nodes[packet.startNodeKey];
    let endNode = nodes[packet.endNodeKey];
 
-   $("#sourceNodeText").html("Source: " + startNode.name);
-   $("#destinationNodeText").html("Destination: " + endNode.name);
+   $("#packetDetailsSourceDestTable").html("");
+   $("#packetDetailsSourceDestTable").append("<tr><td><b>Source</b></td><td>" + startNode.name + "</td></tr>");
+   $("#packetDetailsSourceDestTable").append("<tr><td><b>Destination</b></td><td>" + endNode.name + "</td></tr>");
+
+   $("#packetDetailsTable").html("");
+   let sections = [
+      {key: "questionSection", name: "Question Section"},
+      {key: "answerSection", name: "Answer Section"},
+      {key: "authoritativeSection", name: "Authoritative Section"},
+      {key: "additionalSection", name: "Additional Section"}
+   ];
+   for (const section of sections) {
+      $("#packetDetailsTable").append("<tr><td colspan='4'>" + section.name + "</td></tr>");
+      if (packet[section.key].length == 0) {
+         $("#packetDetailsTable").append("<tr><td>Empty</td></tr>");
+      } else {
+         for (let i = 0; i < packet[section.key].length; i++) {
+            $("#packetDetailsTable").append("<tr><td>" + packet[section.key][i].hostname + "</td><td>" + packet[section.key][i].type + "</td><td>" + packet[section.key][i].ipAddress + "</td></tr>");
+         }
+      }
+   }
 
    if (packet.type == "REQUEST") {
       $("#packetDetailsHeader").html("DNS Request");
@@ -176,10 +195,10 @@ function updatePacketDetailsView(packet) {
 
 function updateNameserverDetailsView(node) {
    $("#nameserverDetailsHeader").html(node.name);
-   $("#nameserverDetails").html("");
+   $("#nameserverDetailsTable").html("");
    for (let i = 0; i < node.records.length; i++) {
       let record = node.records[i];
-      $("#nameserverDetails").append(record.hostname + " " + record.type + " " + record.ipAddress + "<br />");
+      $("#nameserverDetailsTable").append("<tr><td>" + record.hostname + "</td><td>" + record.type + "</td><td>" + record.ipAddress + "</td></tr>");
    }
 }
 

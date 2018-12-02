@@ -45,6 +45,25 @@ button {
    height: 40%;
 }
 
+#packetDetailsSourceDestTable td,
+#packetDetailsTable td {
+   padding: 2px 8px;
+}
+
+#packetDetailsSourceDestTable tr td:first-child {
+   font-weight: bold;
+}
+
+#packetDetailsTable tr td[colspan="4"] {
+   font-weight: bold;
+   font-style: italic;
+   padding-top: 8px;
+}
+
 #nameserverDetailsContainer {
    margin-top: 128px;
+}
+
+#nameserverDetailsTable td {
+   padding: 2px 8px;
 }

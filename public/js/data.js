@@ -43,9 +43,24 @@ var nodes = {
       name: ".edu NS",
       records: [
          {
-            hostname: "ns.umass.edu",
+            hostname: "njit.edu.",
             type: "NS",
-            ipAddress: "128.119.245.95"
+            ipAddress: "dns1.njit.edu."
+         },
+         {
+            hostname: "dns1.njit.edu.",
+            type: "A",
+            ipAddress: "128.235.251.10"
+         },
+         {
+            hostname: "umass.edu",
+            type: "NS",
+            ipAddress: "ns1.umass.edu."
+         },
+         {
+            hostname: "ns1.umass.edu.",
+            type: "A",
+            ipAddress: "128.119.10.27"
          }
       ],
       x: 750,
@@ -58,9 +73,14 @@ var nodes = {
       name: ".com NS",
       records: [
          {
-            hostname: "ns.google.com",
+            hostname: "google.com.",
             type: "NS",
-            ipAddress: "216.239.23.1"
+            ipAddress: "ns1.google.com."
+         },
+         {
+            hostname: "ns.google.com",
+            type: "A",
+            ipAddress: "216.239.32.10"
          }
       ],
       x: 1050,
@@ -75,12 +95,12 @@ var nodes = {
          {
             hostname: "www.umass.edu",
             type: "A",
-            ipAddress: "128.119.245.2"
+            ipAddress: "128.119.8.148"
          },
          {
             hostname: "cs.umass.edu",
             type: "A",
-            ipAddress: "128.119.245.44"
+            ipAddress: "128.119.240.136"
          }
       ],
       x: 600,
@@ -95,12 +115,12 @@ var nodes = {
          {
             hostname: "www.google.com",
             type: "A",
-            ipAddress: "216.239.16.4"
+            ipAddress: "172.217.11.36"
          },
          {
             hostname: "maps.google.com",
             type: "A",
-            ipAddress: "216.239.16.55"
+            ipAddress: "172.217.11.46"
          }
       ],
       x: 1200,
@@ -114,41 +134,158 @@ var packets = [
    {
       type: "REQUEST",
       startNodeKey: "hostA",
-      endNodeKey: "localNS"
+      endNodeKey: "localNS",
+      questionSection: [
+         {
+            hostname: "cs.umass.edu.",
+            type: "A",
+            ipAddress: "______________"
+         }
+      ],
+      answerSection: [],
+      authoritativeSection: [],
+      additionalSection: []
    },
    {
       type: "REQUEST",
       startNodeKey: "localNS",
-      endNodeKey: "rootNS"
+      endNodeKey: "rootNS",
+      questionSection: [
+         {
+            hostname: "cs.umass.edu.",
+            type: "A",
+            ipAddress: "______________"
+         }
+      ],
+      answerSection: [],
+      authoritativeSection: [],
+      additionalSection: []
    },
    {
       type: "RESPONSE",
       startNodeKey: "rootNS",
-      endNodeKey: "localNS"
+      endNodeKey: "localNS",
+      questionSection: [
+         {
+            hostname: "cs.umass.edu.",
+            type: "A",
+            ipAddress: "______________"
+         }
+      ],
+      answerSection: [],
+      authoritativeSection: [],
+      additionalSection: []
    },
    {
       type: "REQUEST",
       startNodeKey: "localNS",
-      endNodeKey: "eduNS"
+      endNodeKey: "eduNS",
+      questionSection: [
+         {
+            hostname: "cs.umass.edu.",
+            type: "A",
+            ipAddress: "______________"
+         }
+      ],
+      answerSection: [],
+      authoritativeSection: [],
+      additionalSection: []
    },
    {
       type: "RESPONSE",
       startNodeKey: "eduNS",
-      endNodeKey: "localNS"
+      endNodeKey: "localNS",
+      questionSection: [
+         {
+            hostname: "cs.umass.edu.",
+            type: "A",
+            ipAddress: "______________"
+         }
+      ],
+      answerSection: [],
+      authoritativeSection: [],
+      additionalSection: []
    },
    {
       type: "REQUEST",
       startNodeKey: "localNS",
-      endNodeKey: "umassNS"
+      endNodeKey: "umassNS",
+      questionSection: [
+         {
+            hostname: "cs.umass.edu.",
+            type: "A",
+            ipAddress: "______________"
+         }
+      ],
+      answerSection: [],
+      authoritativeSection: [],
+      additionalSection: []
    },
    {
       type: "RESPONSE",
       startNodeKey: "umassNS",
-      endNodeKey: "localNS"
+      endNodeKey: "localNS",
+      questionSection: [
+         {
+            hostname: "cs.umass.edu.",
+            type: "A",
+            ipAddress: "______________"
+         }
+      ],
+      answerSection: [
+         {
+            hostname: "cs.umass.edu.",
+            type: "A",
+            ipAddress: "128.119.240.136"
+         }
+      ],
+      authoritativeSection: [
+         {
+            hostname: "umass.edu.",
+            type: "NS",
+            ipAddress: "ns1.umass.edu."
+         }
+      ],
+      additionalSection: [
+         {
+            hostname: "ns1.umass.edu.",
+            type: "A",
+            ipAddress: "128.119.10.27"
+         }
+      ]
    },
    {
       type: "RESPONSE",
       startNodeKey: "localNS",
-      endNodeKey: "hostA"
+      endNodeKey: "hostA",
+      questionSection: [
+         {
+            hostname: "cs.umass.edu.",
+            class: "IN",
+            type: "A",
+            ipAddress: "______________"
+         }
+      ],
+      answerSection: [
+         {
+            hostname: "cs.umass.edu.",
+            type: "A",
+            ipAddress: "128.119.240.136"
+         }
+      ],
+      authoritativeSection: [
+         {
+            hostname: "umass.edu.",
+            type: "NS",
+            ipAddress: "ns1.umass.edu."
+         }
+      ],
+      additionalSection: [
+         {
+            hostname: "ns1.umass.edu.",
+            type: "A",
+            ipAddress: "128.119.10.27"
+         }
+      ]
    }
 ]
