@@ -2,7 +2,7 @@ var nodes = {
    hostA: {
       type: "HOST",
       name: "Host A",
-      hostname: "",
+      hostname: "None",
       ipAddress: "128.235.152.39",
       records: [],
       x: 100,
@@ -13,7 +13,7 @@ var nodes = {
    localNS: {
       type: "SERVER",
       name: "Local NS",
-      hostname: "",
+      hostname: "None",
       ipAddress: "128.235.3.6",
       records: [
          {
@@ -66,7 +66,7 @@ var nodes = {
             ipAddress: "128.235.251.10"
          },
          {
-            hostname: "umass.edu",
+            hostname: "umass.edu.",
             type: "NS",
             ipAddress: "ns1.umass.edu."
          },
@@ -192,8 +192,20 @@ var packets = [
          }
       ],
       answerSection: [],
-      authoritativeSection: [],
-      additionalSection: []
+      authoritativeSection: [
+         {
+            hostname: "edu.",
+            type: "NS",
+            ipAddress: "a.edu-servers.net."
+         }
+      ],
+      additionalSection: [
+         {
+            hostname: "a.edu-servers.net.",
+            type: "A",
+            ipAddress: "192.33.14.50"
+         }
+      ]
    },
    {
       type: "REQUEST",
@@ -222,8 +234,20 @@ var packets = [
          }
       ],
       answerSection: [],
-      authoritativeSection: [],
-      additionalSection: []
+      authoritativeSection: [
+         {
+            hostname: "umass.edu.",
+            type: "NS",
+            ipAddress: "ns1.umass.edu."
+         }
+      ],
+      additionalSection: [
+         {
+            hostname: "ns1.umass.edu.",
+            type: "A",
+            ipAddress: "128.119.10.27"
+         }
+      ]
    },
    {
       type: "REQUEST",
