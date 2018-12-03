@@ -46,11 +46,14 @@ button {
 }
 
 #packetDetailsSourceDestTable td,
-#packetDetailsTable td {
+#packetDetailsTable td,
+#nameserverDetailsHostnameIpTable td,
+#nameserverDetailsTable td {
    padding: 2px 8px;
 }
 
-#packetDetailsSourceDestTable tr td:first-child {
+#packetDetailsSourceDestTable tr td:first-child,
+#nameserverDetailsHostnameIpTable tr td:first-child {
    font-weight: bold;
 }
 
@@ -59,11 +62,10 @@ button {
    font-style: italic;
    padding-top: 8px;
 }
+#nameserverDetailsTable {
+   margin-top: 16px;
+}
 
 #nameserverDetailsContainer {
    margin-top: 128px;
-}
-
-#nameserverDetailsTable td {
-   padding: 2px 8px;
 }

@@ -24,6 +24,7 @@ $("#nextStepButton").click(function() {
 $("#previousStepButton").click(function() {
    if (currentPacket >= 0) {
       hidePacketView(currentPacket);
+      unhighlightAllNodeViews();
 
       currentPacket--;
 
@@ -34,9 +35,11 @@ $("#previousStepButton").click(function() {
          highlightPacketView(currentPacket);
          updatePacketDetailsView(packets[currentPacket]);
 
-         unhighlightAllNodeViews();
          highlightNodeView(endNode, endNodeKey);
          updateNameserverDetailsView(endNode);
+      } else {
+         emptyPacketDetailsView();
+         emptyNameserverDetailsView();
       }
    }
 });

@@ -165,8 +165,8 @@ function updatePacketDetailsView(packet) {
    let endNode = nodes[packet.endNodeKey];
 
    $("#packetDetailsSourceDestTable").html("");
-   $("#packetDetailsSourceDestTable").append("<tr><td><b>Source</b></td><td>" + startNode.name + "</td></tr>");
-   $("#packetDetailsSourceDestTable").append("<tr><td><b>Destination</b></td><td>" + endNode.name + "</td></tr>");
+   $("#packetDetailsSourceDestTable").append("<tr><td><b>Source</b></td><td>" + startNode.ipAddress + " (" + startNode.name + ")</td></tr>");
+   $("#packetDetailsSourceDestTable").append("<tr><td><b>Destination</b></td><td>" + endNode.ipAddress + " (" + endNode.name + ")</td></tr>");
 
    $("#packetDetailsTable").html("");
    let sections = [
@@ -195,11 +195,27 @@ function updatePacketDetailsView(packet) {
 
 function updateNameserverDetailsView(node) {
    $("#nameserverDetailsHeader").html(node.name);
+
+   $("#nameserverDetailsHostnameIpTable").html("");
+   $("#nameserverDetailsHostnameIpTable").append("<tr><td>Hostname</td><td>" + node.hostname + "</td></tr>");
+   $("#nameserverDetailsHostnameIpTable").append("<tr><td>IP Address</td><td>" + node.ipAddress + "</td></tr>");
+
    $("#nameserverDetailsTable").html("");
    for (let i = 0; i < node.records.length; i++) {
       let record = node.records[i];
       $("#nameserverDetailsTable").append("<tr><td>" + record.hostname + "</td><td>" + record.type + "</td><td>" + record.ipAddress + "</td></tr>");
    }
+}
+
+function emptyPacketDetailsView() {
+   $("#packetDetailsSourceDestTable").html("");
+   $("#packetDetailsTable").html("");
+   $("#packetDetailsHeader").html("");
+}
+
+function emptyNameserverDetailsView() {
+   $("#nameserverDetailsHeader").html("");
+   $("#nameserverDetailsTable").html("");
 }
 
 function loadImages(sources, callback) {

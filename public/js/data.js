@@ -2,6 +2,8 @@ var nodes = {
    hostA: {
       type: "HOST",
       name: "Host A",
+      hostname: "",
+      ipAddress: "128.235.152.39",
       records: [],
       x: 100,
       y: 450,
@@ -11,9 +13,11 @@ var nodes = {
    localNS: {
       type: "SERVER",
       name: "Local NS",
+      hostname: "",
+      ipAddress: "128.235.3.6",
       records: [
          {
-            hostname: "a.root-servers.net",
+            hostname: "a.root-servers.net.",
             type: "A",
             ipAddress: "198.41.0.4"
          }
@@ -26,11 +30,18 @@ var nodes = {
    rootNS: {
       type: "SERVER",
       name: "Root NS",
+      hostname: "a.root-servers.net.",
+      ipAddress: "198.41.0.4",
       records: [
          {
-            hostname: "???",
+            hostname: "a.edu-servers.net.",
             type: "A",
-            ipAddress: "???"
+            ipAddress: "192.33.14.50"
+         },
+         {
+            hostname: "a.gltd-servers.net.",
+            type: "A",
+            ipAddress: "192.5.6.30"
          }
       ],
       x: 900,
@@ -41,6 +52,8 @@ var nodes = {
    eduNS: {
       type: "SERVER",
       name: ".edu NS",
+      hostname: "a.edu-servers.net.",
+      ipAddress: "192.33.14.50",
       records: [
          {
             hostname: "njit.edu.",
@@ -71,6 +84,8 @@ var nodes = {
    comNS: {
       type: "SERVER",
       name: ".com NS",
+      hostname: "a.gltd-servers.net.",
+      ipAddress: "192.5.6.30",
       records: [
          {
             hostname: "google.com.",
@@ -91,6 +106,8 @@ var nodes = {
    umassNS: {
       type: "SERVER",
       name: "umass.edu NS",
+      hostname: "ns1.umass.edu.",
+      ipAddress: "128.119.10.27",
       records: [
          {
             hostname: "www.umass.edu",
@@ -111,6 +128,8 @@ var nodes = {
    googleNS: {
       type: "SERVER",
       name: "google.com NS",
+      hostname: "ns1.google.com.",
+      ipAddress: "216.239.32.10",
       records: [
          {
             hostname: "www.google.com",
