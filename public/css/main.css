@@ -41,6 +41,60 @@ button {
    margin-left: 8px;
 }
 
+#toggleAndLabels {
+   position: absolute;
+   top: 36px;
+   left: 36px;
+}
+
+#toggleContainer {
+   position: relative;
+   width: 60px;
+   height: 28px;
+   display: inline-block;
+   margin: 0px 8px;
+}
+
+#toggleCheckbox {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+#toggleSlider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #AAAAAA;
+  border-radius: 28px;
+  -webkit-transition: .1s;
+  transition: .1s;
+}
+
+#toggleSliderKnob {
+  content: "";
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 4px;
+  bottom: 4px;
+  cursor: pointer;
+  background-color: white;
+  border-radius: 50%;
+  -webkit-transition: .1s;
+  transition: .1s;
+}
+
+#toggleCheckbox:checked ~ #toggleSliderKnob {
+  -webkit-transform: translateX(32px);
+  -ms-transform: translateX(32px);
+  transform: translateX(32px);
+}
+
+
 #packetDetailsContainer {
    height: 40%;
 }
@@ -57,13 +111,11 @@ button {
    font-weight: bold;
 }
 
-#packetDetailsTable tr td[colspan="4"] {
+#packetDetailsTable tr td[colspan="4"],
+#nameserverDetailsTable tr td[colspan="3"] {
    font-weight: bold;
    font-style: italic;
    padding-top: 8px;
-}
-#nameserverDetailsTable {
-   margin-top: 16px;
 }
 
 #nameserverDetailsContainer {

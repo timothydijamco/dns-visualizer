@@ -201,6 +201,7 @@ function updateNameserverDetailsView(node) {
    $("#nameserverDetailsHostnameIpTable").append("<tr><td>IP Address</td><td>" + node.ipAddress + "</td></tr>");
 
    $("#nameserverDetailsTable").html("");
+   $("#nameserverDetailsTable").append("<tr><td colspan='3'>Records</td></tr>");
    for (let i = 0; i < node.records.length; i++) {
       let record = node.records[i];
       $("#nameserverDetailsTable").append("<tr><td>" + record.hostname + "</td><td>" + record.type + "</td><td>" + record.ipAddress + "</td></tr>");
@@ -215,6 +216,7 @@ function emptyPacketDetailsView() {
 
 function emptyNameserverDetailsView() {
    $("#nameserverDetailsHeader").html("");
+   $("#nameserverDetailsHostnameIpTable").html("");
    $("#nameserverDetailsTable").html("");
 }
 
