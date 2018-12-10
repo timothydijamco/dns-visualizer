@@ -43,3 +43,11 @@ $("#previousStepButton").click(function() {
       }
    }
 });
+
+$("#toggleCheckbox").change(function() {
+   if (this.checked) {
+      enableDetailedView();
+   } else {
+      disableDetailedView();
+   }
+});
