@@ -1,0 +1,34 @@
+html, body {
+   height: 100%;
+   padding: 0;
+   margin: 0;
+   font-family: 'Open Sans', sans-serif;
+}
+
+button {
+   width: 300px;
+   padding: 36px 72px;
+   margin: 0px 25px;
+   background-color: white;
+   border: 1px solid #CCC;
+   font-family: 'Open Sans', sans-serif;
+   font-weight: 100;
+   font-size: 20pt;
+}
+
+#dnsVisualizerTextContainer {
+   margin-top: 100px;
+   text-align: center;
+   font-size: 48pt;
+}
+
+#chooseVizTextContainer {
+   margin-top: 80px;
+   text-align: center;
+   font-size: 18pt;
+}
+
+#vizButtonsContainer {
+   margin-top: 40px;
+   text-align: center;
+}

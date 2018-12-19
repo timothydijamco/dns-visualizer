@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <script src="https://unpkg.com/konva@2.4.2/konva.min.js"></script>
+   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+   <link rel="stylesheet" type="text/css" href="./css/main.css">
+   <title>DNS Visualizer</title>
+</head>
+<body>
+   <div id="canvasContainer"></div>
+   <div id="sidebarContainer">
+      <div id="packetDetailsContainer">
+         <h1 id="packetDetailsHeader"></h1>
+         <table id="packetDetailsSourceDestTable"></table>
+         <table id="packetDetailsTable"></table>
+      </div>
+      <div id="nameserverDetailsContainer">
+         <hr/>
+         <h1 id="nameserverDetailsHeader"></h1>
+         <table id="nameserverDetailsHostnameIpTable"></table>
+         <table id="nameserverDetailsTable"></table>
+      </div>
+   </div>
+   <div id="stepButtons">
+      <button id="previousStepButton">Previous Step</button>
+      <button id="nextStepButton">Next Step</button>
+   </div>
+   <div id="topLeftControls">
+      <a href="./index.html"><button id="backButton">Back to home</button></a>
+      Simple
+      <label id="toggleContainer">
+         <input id="toggleCheckbox" type="checkbox" />
+         <span id="toggleSlider"></span>
+         <span id="toggleSliderKnob"></span>
+      </label>
+      Detailed
+   </div>
+   <script src="./js/data_recursive.js"></script>
+   <script src="./js/view.js"></script>
+   <script src="./js/main.js"></script>
+</body>
+</html>

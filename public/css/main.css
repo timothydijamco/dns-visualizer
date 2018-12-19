@@ -41,10 +41,14 @@ button {
    margin-left: 8px;
 }
 
-#toggleAndLabels {
+#topLeftControls {
    position: absolute;
    top: 36px;
    left: 36px;
+}
+
+#backButton {
+   margin-right: 24px;
 }
 
 #toggleContainer {
