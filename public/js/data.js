@@ -154,6 +154,7 @@ var packets = [
       type: "REQUEST",
       startNodeKey: "hostA",
       endNodeKey: "localNS",
+      description: "Looking up cs.umass.edu.",
       questionSection: [
          {
             hostname: "cs.umass.edu.",
@@ -169,6 +170,7 @@ var packets = [
       type: "REQUEST",
       startNodeKey: "localNS",
       endNodeKey: "rootNS",
+      description: "Looking up cs.umass.edu.",
       questionSection: [
          {
             hostname: "cs.umass.edu.",
@@ -184,6 +186,7 @@ var packets = [
       type: "RESPONSE",
       startNodeKey: "rootNS",
       endNodeKey: "localNS",
+      description: "Referring to .edu NS",
       questionSection: [
          {
             hostname: "cs.umass.edu.",
@@ -211,6 +214,7 @@ var packets = [
       type: "REQUEST",
       startNodeKey: "localNS",
       endNodeKey: "eduNS",
+      description: "Looking up cs.umass.edu.",
       questionSection: [
          {
             hostname: "cs.umass.edu.",
@@ -226,6 +230,7 @@ var packets = [
       type: "RESPONSE",
       startNodeKey: "eduNS",
       endNodeKey: "localNS",
+      description: "Referring to umass.edu NS",
       questionSection: [
          {
             hostname: "cs.umass.edu.",
@@ -253,6 +258,7 @@ var packets = [
       type: "REQUEST",
       startNodeKey: "localNS",
       endNodeKey: "umassNS",
+      description: "Looking up cs.umass.edu.",
       questionSection: [
          {
             hostname: "cs.umass.edu.",
@@ -268,6 +274,7 @@ var packets = [
       type: "RESPONSE",
       startNodeKey: "umassNS",
       endNodeKey: "localNS",
+      description: "Responding with IP address of cs.umass.edu.: 128.119.240.136",
       questionSection: [
          {
             hostname: "cs.umass.edu.",
@@ -301,6 +308,7 @@ var packets = [
       type: "RESPONSE",
       startNodeKey: "localNS",
       endNodeKey: "hostA",
+      description: "Responding with IP address of cs.umass.edu.: 128.119.240.136",
       questionSection: [
          {
             hostname: "cs.umass.edu.",

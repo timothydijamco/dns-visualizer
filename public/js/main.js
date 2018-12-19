@@ -15,9 +15,11 @@ $("#nextStepButton").click(function() {
       highlightPacketView(currentPacket);
       updatePacketDetailsView(packets[currentPacket]);
 
-      unhighlightAllNodeViews();
-      highlightNodeView(endNode, endNodeKey);
-      updateNameserverDetailsView(endNode);
+      if (packets[currentPacket].type =="REQUEST") {
+         unhighlightAllNodeViews();
+         highlightNodeView(endNode, endNodeKey);
+         updateNameserverDetailsView(endNode);
+      }
    }
 });
 

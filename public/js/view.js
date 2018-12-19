@@ -202,10 +202,12 @@ function updatePacketDetailsView(packet) {
    if (!detailedView) {
       $("#packetDetailsSourceDestTable").append("<tr><td><b>Source</b></td><td>" + startNode.name + "</td></tr>");
       $("#packetDetailsSourceDestTable").append("<tr><td><b>Destination</b></td><td>" + endNode.name + "</td></tr>");
+
       $("#packetDetailsTable").html("");
+      $("#packetDetailsTable").append("<tr><td>" + packet.description + "</td></tr>");
    } else {
-      $("#packetDetailsSourceDestTable").append("<tr><td><b>Source</b></td><td>" + startNode.ipAddress + " (" + startNode.name + ")</td></tr>");
-      $("#packetDetailsSourceDestTable").append("<tr><td><b>Destination</b></td><td>" + endNode.ipAddress + " (" + endNode.name + ")</td></tr>");
+      $("#packetDetailsSourceDestTable").append("<tr><td><b>Source</b></td><td>" + startNode.name + " (" + startNode.ipAddress + ")</td></tr>");
+      $("#packetDetailsSourceDestTable").append("<tr><td><b>Destination</b></td><td>" + endNode.name + " (" + endNode.ipAddress + ")</td></tr>");
 
       $("#packetDetailsTable").html("");
       let sections = [
@@ -215,12 +217,14 @@ function updatePacketDetailsView(packet) {
          {key: "additionalSection", name: "Additional Section"}
       ];
       for (const section of sections) {
-         $("#packetDetailsTable").append("<tr><td colspan='4'>" + section.name + "</td></tr>");
-         if (packet[section.key].length == 0) {
-            $("#packetDetailsTable").append("<tr><td>Empty</td></tr>");
-         } else {
-            for (let i = 0; i < packet[section.key].length; i++) {
-               $("#packetDetailsTable").append("<tr><td>" + packet[section.key][i].hostname + "</td><td>" + packet[section.key][i].type + "</td><td>" + packet[section.key][i].ipAddress + "</td></tr>");
+         if (packet.hasOwnProperty(section.key)) {
+            $("#packetDetailsTable").append("<tr><td colspan='4'>" + section.name + "</td></tr>");
+            if (packet[section.key].length == 0) {
+               $("#packetDetailsTable").append("<tr><td>Empty</td></tr>");
+            } else {
+               for (let i = 0; i < packet[section.key].length; i++) {
+                  $("#packetDetailsTable").append("<tr><td>" + packet[section.key][i].hostname + "</td><td>" + packet[section.key][i].type + "</td><td>" + packet[section.key][i].ipAddress + "</td></tr>");
+               }
             }
          }
       }
