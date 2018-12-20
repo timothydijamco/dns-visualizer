@@ -126,7 +126,7 @@ function createPacketViews(packets, nodes) {
       let endNode = nodes[endNodeKey];
       let packetType = packets[i].type;
 
-      if (startNode.x <= endNode.x) {
+      if (startNode.col <= endNode.col) {
          var arrowStartX = board.getCellContentsTopLeftX(startNode.col) + board.getCellContentsWidth() + 16;
          var arrowEndX = board.getCellContentsTopLeftX(endNode.col) - 16;
       } else {

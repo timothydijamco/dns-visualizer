@@ -5,8 +5,6 @@ var nodes = {
       hostname: "None",
       ipAddress: "128.235.152.39",
       records: [],
-      x: 100,
-      y: 450,
       col: 0,
       row: 2
    },
@@ -22,8 +20,6 @@ var nodes = {
             ipAddress: "198.41.0.4"
          }
       ],
-      x: 300,
-      y: 450,
       col: 1,
       row: 2
    },
@@ -44,8 +40,6 @@ var nodes = {
             ipAddress: "192.5.6.30"
          }
       ],
-      x: 900,
-      y: 50,
       col: 4,
       row: 0
    },
@@ -76,8 +70,6 @@ var nodes = {
             ipAddress: "128.119.10.27"
          }
       ],
-      x: 750,
-      y: 250,
       col: 3,
       row: 1
    },
@@ -98,8 +90,6 @@ var nodes = {
             ipAddress: "216.239.32.10"
          }
       ],
-      x: 1050,
-      y: 250,
       col: 5,
       row: 1
    },
@@ -120,8 +110,6 @@ var nodes = {
             ipAddress: "128.119.240.136"
          }
       ],
-      x: 600,
-      y: 450,
       col: 2,
       row: 2
    },
@@ -142,8 +130,6 @@ var nodes = {
             ipAddress: "172.217.11.46"
          }
       ],
-      x: 1200,
-      y: 450,
       col: 6,
       row: 2
    }
