@@ -85,7 +85,7 @@ var nodes = {
             ipAddress: "ns1.google.com."
          },
          {
-            hostname: "ns.google.com",
+            hostname: "ns1.google.com",
             type: "A",
             ipAddress: "216.239.32.10"
          }
